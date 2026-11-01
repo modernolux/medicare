@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-sans text-brand-ink antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply leading-[1.2];
+  }
+
+  p {
+    @apply leading-[1.5];
+  }
+}
+
+@layer components {
+  .hero-section {
+    --hero-focus: right center;
+  }
+
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .section-pad {
+    @apply py-16 md:py-24;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand-green/30 transition duration-300 hover:-translate-y-0.5 hover:bg-brand-green-dark hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-green/40;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-black px-7 py-3 text-sm font-semibold text-brand-black transition duration-300 hover:bg-brand-black hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-green/40;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-[0.18em] text-brand-green-dark;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
