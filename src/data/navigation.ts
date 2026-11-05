@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import { Ambulance, Bone, Brain, FlaskConical, Microscope, Scan, Stethoscope, Syringe } from 'lucide-react';
+import { Ambulance, Bone, Brain, FlaskConical, House, Microscope, Scan, Stethoscope, Syringe } from 'lucide-react';
 import { SPECIALTIES } from '@/data/specialties';
 
 export interface NavChild {
@@ -49,6 +49,7 @@ export const SERVICE_MENU: NavGroup[] = [
   },
   { label: 'Endoskopi', icon: Microscope, to: '/sherbimet/endoskopi' },
   { label: 'Shërbime Infermierore', icon: Syringe, to: '/sherbimet/sherbime-infermierore' },
+  { label: 'Vizita në shtëpi', icon: House, to: '/sherbimet/vizita-ne-shtepi' },
   { label: 'Laborator', icon: FlaskConical, to: '/sherbimet/laborator' },
   { label: 'Transport me Ambulancë', icon: Ambulance, to: '/sherbimet/transport-me-ambulance' },
   { label: 'Paisje Ortopedike', icon: Bone, to: '/sherbimet/paisje-ortopedike' },
@@ -59,6 +60,7 @@ export const FOOTER_SERVICE_LINKS = [
   { label: 'Konsulta', to: '/mjeket-tane' },
   { label: 'Elektrofiziologji', to: '/sherbimet/elektrofiziologji' },
   { label: 'Laborator', to: '/sherbimet/laborator' },
+  { label: 'Vizita në shtëpi', to: '/sherbimet/vizita-ne-shtepi' },
 ] as const;
 
 export const FOOTER_MAIN_LINKS = [

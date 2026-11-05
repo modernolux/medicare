@@ -3,14 +3,16 @@ interface ServiceHeroProps {
   imageAlt: string;
   title: string;
   intro: string;
+  subtitle?: string;
 }
 
-export function ServiceHero({ image, imageAlt, title, intro }: ServiceHeroProps) {
+export function ServiceHero({ image, imageAlt, title, intro, subtitle }: ServiceHeroProps) {
   return (
     <section className="section-pad container-page grid items-center gap-12 lg:grid-cols-2">
       <img src={image} alt={imageAlt} className="h-[420px] w-full rounded-3xl object-cover shadow-card md:h-[520px]" />
       <div>
         <h2 className="text-3xl font-bold text-brand-green-dark sm:text-4xl">{title}</h2>
+        {subtitle && <p className="mt-3 text-xl font-semibold text-brand-black">{subtitle}</p>}
         <p className="mt-6 text-lg leading-relaxed text-brand-muted">{intro}</p>
       </div>
     </section>

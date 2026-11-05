@@ -18,6 +18,7 @@ const hubServiceSlugs = [
   'sherbime-infermierore',
   'transport-me-ambulance',
   'paisje-ortopedike',
+  'vizita-ne-shtepi',
 ];
 
 const hubSpecialtySlugs = ['kardiologji', 'neurologji'];

@@ -39,7 +39,7 @@ export default function HeroSection() {
                 Kujdes shëndetësor i besueshëm që nga viti 2003
               </span>
               <a
-                href={buildWhatsAppUrl('Përshëndetje, dua të rezervoj një takim!')}
+                href={buildWhatsAppUrl('Përshëndetje, dua të rezervoj një takim.')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-12 w-full max-w-[320px] items-center justify-center self-center rounded-full bg-white px-7 text-sm font-semibold text-brand-green-dark shadow-md transition duration-300 hover:-translate-y-0.5 hover:bg-brand-green-dark hover:text-white hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-white/50 md:h-[52px] md:w-auto md:max-w-none md:self-start md:px-8 md:py-0 md:hover:!bg-brand-green-dark md:hover:!text-white"

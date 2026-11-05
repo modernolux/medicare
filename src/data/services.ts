@@ -1,4 +1,4 @@
-import { Activity, Ambulance, Award, Bone, Brain, FlaskConical, Microscope, Radiation, Scan, Stethoscope, Syringe } from 'lucide-react';
+import { Activity, Ambulance, Award, Bone, Brain, FlaskConical, House, Microscope, Radiation, Scan, Stethoscope, Syringe } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { IMAGES } from '@/data/images';
 
@@ -8,6 +8,7 @@ export interface Service {
   title: string;
   cardText: string;
   intro: string;
+  subtitle?: string;
   image: string;
   imageAlt: string;
   icon: LucideIcon;
@@ -167,6 +168,19 @@ export const SERVICES: Service[] = [
     imageAlt: 'Ambulancat e Medicare para qendrës',
     icon: Ambulance,
     items: ['Transport brenda vendit', 'Transport ndërkombëtar jashtë vendit me staf mjekësor'],
+  },
+  {
+    slug: 'vizita-ne-shtepi',
+    path: '/sherbimet/vizita-ne-shtepi',
+    title: 'Vizita në shtëpi',
+    cardText: 'Mjek dhe infermier në shtëpinë tuaj.',
+    subtitle: 'Mjek dhe infermier në shtëpinë tuaj',
+    intro:
+      'Ofrojmë vizita me mjek dhe shërbime infermierore në shtëpinë tuaj, për pacientët që nuk mund të vijnë në qendër. Për të rezervuar një vizitë, na telefononi ose na shkruani në WhatsApp.',
+    image: IMAGES.placeholderNurse,
+    imageAlt: 'Mjek dhe infermier duke ofruar kujdes në shtëpi',
+    icon: House,
+    items: [],
   },
   {
     slug: 'paisje-ortopedike',

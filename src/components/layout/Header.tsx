@@ -7,6 +7,7 @@ import MobileMenu from '@/components/layout/MobileMenu';
 import ServiceSearch from '@/components/search/ServiceSearch';
 import { navLinkClass } from '@/components/layout/navStyles';
 import { LOGO } from '@/data/logo';
+import { buildWhatsAppUrl } from '@/lib/links';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -54,9 +55,9 @@ export default function Header() {
           >
             <Search className="h-5 w-5" aria-hidden="true" />
           </button>
-          <Link to="/rezervo" className="btn-primary hidden px-5 py-2.5 text-sm md:inline-flex">
+          <a href={buildWhatsAppUrl('Përshëndetje, dua të rezervoj një takim.')} target="_blank" rel="noopener noreferrer" className="btn-primary hidden px-5 py-2.5 text-sm md:inline-flex">
             Rezervo Një Takim
-          </Link>
+          </a>
           <button
             type="button"
             onClick={toggleMenu}

@@ -17,6 +17,8 @@ const serviceSearchItems = SERVICES.flatMap((service) => [
 export const SERVICE_HUB_SEARCH_ITEMS: ServiceHubSearchItem[] = [
   ...serviceSearchItems,
   { label: 'Analiza', to: '/sherbimet/laborator', icon: FlaskConical },
+  { label: 'Mjek në shtëpi', to: '/sherbimet/vizita-ne-shtepi', icon: SERVICES.find((service) => service.slug === 'vizita-ne-shtepi')!.icon },
+  { label: 'Infermier në shtëpi', to: '/sherbimet/vizita-ne-shtepi', icon: SERVICES.find((service) => service.slug === 'vizita-ne-shtepi')!.icon },
   ...SPECIALTIES.map((specialty) => ({
     label: `Konsultë ${specialty.name}`,
     to: `/sherbimet/konsulta/${specialty.slug}`,

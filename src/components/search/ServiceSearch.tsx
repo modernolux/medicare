@@ -233,10 +233,9 @@ export default function ServiceSearch({ onClose }: ServiceSearchProps) {
                     <MessageCircle className="h-4 w-4" aria-hidden="true" />
                     WhatsApp
                   </a>
-                  <button type="button" onClick={() => go('/rezervo')} className={SECONDARY_BUTTON}>
-                    <CalendarCheck className="h-4 w-4" aria-hidden="true" />
+                  <a href={buildWhatsAppUrl('Përshëndetje, dua të rezervoj një takim.')} target="_blank" rel="noopener noreferrer" className={SECONDARY_BUTTON}>
                     Rezervo një Takim
-                  </button>
+                  </a>
                 </div>
               </div>
             ) : (
