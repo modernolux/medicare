@@ -1,15 +1,18 @@
+import type { ReactNode } from 'react';
+
 interface ServiceHeroProps {
   image: string;
   imageAlt: string;
   title: string;
   intro: string;
   subtitle?: string;
+  imageContent?: ReactNode;
 }
 
-export function ServiceHero({ image, imageAlt, title, intro, subtitle }: ServiceHeroProps) {
+export function ServiceHero({ image, imageAlt, title, intro, subtitle, imageContent }: ServiceHeroProps) {
   return (
     <section className="section-pad container-page grid items-center gap-12 lg:grid-cols-2">
-      <img src={image} alt={imageAlt} className="h-[420px] w-full rounded-3xl object-cover shadow-card md:h-[520px]" />
+      {imageContent ?? <img src={image} alt={imageAlt} className="h-[420px] w-full rounded-3xl object-cover shadow-card md:h-[520px]" />}
       <div>
         <h2 className="text-3xl font-bold text-brand-green-dark sm:text-4xl">{title}</h2>
         {subtitle && <p className="mt-3 text-xl font-semibold text-brand-black">{subtitle}</p>}
