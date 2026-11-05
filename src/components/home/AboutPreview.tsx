@@ -1,10 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { PointerEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { ABOUT_INTRO } from '@/data/about';
 import { IMAGES } from '@/data/images';
-
-const introExcerpt = ABOUT_INTRO.split('. ').slice(0, 2).join('. ') + '.';
 
 const aboutSlideAlts = [
   'Salla e pritjes së qendrës Medicare me ngjyra jeshile',
@@ -76,7 +73,17 @@ export default function AboutPreview() {
       <div>
         <p className="eyebrow mb-3">Rreth Nesh</p>
         <h2 className="text-3xl font-bold text-brand-black sm:text-4xl">Medicare Klinik, një emër i besuar në Durrës</h2>
-        <p className="mt-6 text-lg text-brand-muted">{introExcerpt}</p>
+        <p className="mt-6 text-lg text-brand-muted">
+          <span className="block">
+            E themeluar në <span className="text-brand-green-dark">vitin 2003</span> në qytetin e Durrësit, Medicare Klinik ka ndërtuar ndër vite një histori të rëndësishme në fushën e shërbimeve shëndetësore, duke u bërë një emër i njohur për pacientët që kërkojnë kujdes mjekësor profesional dhe të besueshëm.
+          </span>
+          <span className="mt-4 block">
+            Me synimin për të ofruar shërbime diagnostikuese cilësore dhe të sakta, një nga momentet më të rëndësishme në historinë tonë ishte prezantimi i <span className="text-brand-green-dark">skanerit të parë</span> në Durrës, një hap i rëndësishëm në zhvillimin e diagnostikimit mjekësor në qytet.
+          </span>
+          <span className="mt-4 block">
+            Në funksion të rritjes së cilësisë dhe profesionalizmit, bashkëpunojmë ngushtë me klinikën <span className="text-brand-green-dark">Medicare në Tiranë</span>, ku interpretimi dhe vlerësimi i imazheve të skanerit kryhet nga specialistë të stafit të saj, duke garantuar ekspertizë profesionale dhe kujdes të specializuar për çdo pacient.
+          </span>
+        </p>
         <Link to="/rreth-nesh" className="btn-primary mt-8">
           Lexo më shumë
         </Link>
