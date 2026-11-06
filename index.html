@@ -17,7 +17,11 @@
   <body>
     <div id="root"></div>
     <script>
-      if (window.location.hash.startsWith('#/')) window.history.replaceState({}, '', window.location.hash.slice(1));
+      (function () {
+        if (window.location.hash.indexOf('#/') === 0) {
+          window.history.replaceState({}, '', window.location.hash.slice(1));
+        }
+      })();
     </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>

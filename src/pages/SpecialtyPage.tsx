@@ -10,7 +10,7 @@ import { useSeo } from '@/hooks/useSeo';
 export default function SpecialtyPage() {
   const { slug = '' } = useParams();
   const specialty = getSpecialtyBySlug(slug);
-  useSeo({ title: specialty ? `Konsulta me ${specialty.name}` : 'Konsulta', description: specialty?.intro ?? '', structuredData: specialty ? { '@type': 'Service', name: `Konsulta me ${specialty.name}`, description: specialty.intro, provider: { '@id': 'https://medicaredurres.al/#clinic' }, areaServed: 'Durrës', url: `https://medicaredurres.al/sherbimet/konsulta/${specialty.slug}` } : undefined });
+  useSeo({ title: specialty ? `Konsulta me ${specialty.name}` : 'Konsulta', description: specialty?.intro ?? '', structuredData: specialty ? { '@type': 'Service', name: `Konsulta me ${specialty.name}`, description: specialty.intro, provider: { '@id': 'https://www.medicaredurres.al/#clinic' }, areaServed: 'Durrës', url: `https://www.medicaredurres.al/sherbimet/konsulta/${specialty.slug}` } : undefined });
   if (!specialty) return <NotFoundPage />;
   const doctors = DOCTORS.filter((doctor) => doctor.specialty === specialty.doctorSpecialty);
   const Icon = specialty.icon;
