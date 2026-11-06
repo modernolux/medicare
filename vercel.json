@@ -1,17 +1,9 @@
 {
   "trailingSlash": false,
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.medicaredurres.al" }],
-      "destination": "https://medicaredurres.al/$1",
-      "permanent": true
-    }
+  "redirects": [{ "source": "/(.*)", "has": [{ "type": "host", "value": "www.medicaredurres.al" }], "destination": "https://medicaredurres.al/$1", "permanent": true }],
+  "headers": [
+    { "source": "/(.*)\\.html", "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }] },
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }
   ],
-  "rewrites": [
-    {
-      "source": "/((?!robots\\.txt|sitemap\\.xml|assets/).*)",
-      "destination": "/index.html"
-    }
-  ]
+  "rewrites": [{ "source": "/((?!robots\\.txt|sitemap\\.xml|assets/).*)", "destination": "/index.html" }]
 }

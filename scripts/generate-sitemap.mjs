@@ -1,12 +1,18 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { pages, SITE_URL, fullTitle, safeDescription, jsonLd } from './seo-pages.mjs';
 
-const SITE_URL = process.env.VITE_SITE_URL || 'https://medicaredurres.al';
 const lastmod = new Date().toISOString().slice(0, 10);
-const doctorSlugs = ['indrit-kellici','ornela-kalaja','edlira-ndreu','edi-vafeklliu','sotir-xhunga','arlind-maliqati','erenato-bushi','taulant-bita','megi-legbello','ira-xhemollari','arjeta-cyrbja','elona-kodra','shkelqim-ferko','gent-kavaja','besmir-muca','selami-balla','isid-xhura','endri-shehu','dorina-qerimi','silvana-kau','malbora-jani','ermira-demiraj','elton-ceka','armando-mersini','blerim-bucpapaj','ivirt-shkreli'];
-const serviceSlugs = ['tomografi-kompjuterizuar','radiografi-digitale','ekografi','elektrofiziologji','endoskopi','sherbime-infermierore','vizita-ne-shtepi','laborator','transport-me-ambulance','paisje-ortopedike'];
-const specialtySlugs = ['neurologji','pneumologji','kardiologji','reumatologji','ortopedi','gastrohepatologji','urologji','gjinekologji','endokrinologji','hematologji','orl','alergologji','pediatri','dermatologji'];
-const paths = ['/', '/rreth-nesh', '/mjeket-tane', '/sherbimet', '/kontakti', '/rregullat-dhe-kushtet', '/politikat-e-privatesise', ...doctorSlugs.map((slug) => `/mjeket-tane/${slug}`), ...serviceSlugs.map((slug) => `/sherbimet/${slug}`), ...specialtySlugs.map((slug) => `/sherbimet/konsulta/${slug}`)];
-const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paths.map((path) => `  <url><loc>${SITE_URL}${path}</loc><lastmod>${lastmod}</lastmod></url>`).join('\n')}\n</urlset>\n`;
+const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((page) => `  <url><loc>${SITE_URL}${page.path}</loc><lastmod>${lastmod}</lastmod></url>`).join('\n')}\n</urlset>\n`;
 await mkdir('dist', { recursive: true });
 await writeFile('dist/sitemap.xml', xml);
-console.log(`Generated ${paths.length} sitemap URLs.`);
+const template = await readFile('dist/index.html', 'utf8');
+for (const page of pages) {
+  const canonical = `${SITE_URL}${page.path}`;
+  const description = safeDescription(page.description);
+  const head = `<title>${fullTitle(page.title)}</title><meta name="description" content="${description.replaceAll('"', '&quot;')}"><meta name="robots" content="index,follow"><link rel="canonical" href="${canonical}"><meta property="og:title" content="${fullTitle(page.title)}"><meta property="og:description" content="${description.replaceAll('"', '&quot;')}"><meta property="og:url" content="${canonical}"><meta property="og:type" content="website"><meta property="og:site_name" content="Medicare Qendër Diagnostike Durrës"><meta property="og:locale" content="sq_AL"><meta property="og:image" content="${SITE_URL}/Medicare_Diagnostic_Clinic_Entrance.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${SITE_URL}/Medicare_Diagnostic_Clinic_Entrance.png"><script type="application/ld+json">${JSON.stringify(jsonLd(page))}</script>`;
+  const html = template.replace(/<title>[\s\S]*?<\/title>/, '').replace(/<meta name="description"[\s\S]*?>/, '').replace('</head>', `${head}</head>`);
+  const directory = page.path === '/' ? 'dist' : `dist${page.path}`;
+  await mkdir(directory, { recursive: true });
+  await writeFile(`${directory}/index.html`, html);
+}
+console.log(`Generated ${pages.length} sitemap URLs and pre-rendered heads.`);

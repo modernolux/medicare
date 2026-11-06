@@ -14,7 +14,7 @@ import { useSeo } from '@/hooks/useSeo';
 export default function ServiceDetailPage() {
   const { slug = '' } = useParams();
   const service = getServiceBySlug(slug);
-  useSeo({ title: service?.title ?? 'Shërbimi', description: service?.cardText ?? '' });
+  useSeo({ title: service?.title ?? 'Shërbimi', description: service?.cardText ?? '', structuredData: service ? { '@type': 'Service', name: service.title, description: service.intro, provider: { '@id': 'https://medicaredurres.al/#clinic' }, areaServed: 'Durrës', url: `https://medicaredurres.al${service.path}` } : undefined });
   if (!service || (service.items.length === 0 && service.slug !== 'vizita-ne-shtepi')) return <NotFoundPage />;
   const isHomeVisit = service.slug === 'vizita-ne-shtepi';
   const isAmbulance = service.slug === 'transport-me-ambulance';
