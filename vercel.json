@@ -1,0 +1,17 @@
+{
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.medicaredurres.al" }],
+      "destination": "https://medicaredurres.al/$1",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!robots\\.txt|sitemap\\.xml|assets/).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
