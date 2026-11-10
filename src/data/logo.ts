@@ -1,5 +1,5 @@
-import logo from '@/assets/Modern_Green_Medical_Diagnostic_Logo-removebg-preview.png';
-import favicon from '@/assets/medicare-favicon.png';
+import logo from '@/assets/logo-v2.png';
+import favicon from '@/assets/favicon-v2.png';
 
 export const LOGO = logo;
 export const FAVICON = favicon;
