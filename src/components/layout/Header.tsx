@@ -29,7 +29,7 @@ export default function Header() {
     <header className="sticky top-0 z-40 border-b border-brand-black/10 bg-white/95 shadow-sm backdrop-blur">
       <div className="container-page flex h-20 items-center justify-between gap-6">
         <Link to="/" className="shrink-0 transition hover:opacity-90">
-          <img src={LOGO} alt="Medicare Qendër Diagnostike Durrës" className="h-14 w-auto object-contain lg:h-[56px]" />
+          <img src={LOGO} alt="Medicare Qendër Diagnostike Durrës" className="logo-header" />
         </Link>
 
         <nav aria-label="Menu kryesore" className="hidden flex-1 items-center justify-center gap-9 lg:flex">

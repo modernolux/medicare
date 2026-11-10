@@ -5,7 +5,7 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body { @apply bg-white font-sans text-brand-ink antialiased; }
-  img { aspect-ratio: 4 / 3; }
+  img:not([src*="logo-v3"]):not([src*="favicon"]) { aspect-ratio: 4 / 3; }
   h1, h2, h3, h4 { @apply leading-[1.2]; }
   p { @apply leading-[1.5]; }
 }
@@ -16,7 +16,11 @@
   .section-pad { @apply py-16 md:py-24; }
   .btn-primary { @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand-green/30 transition duration-300 hover:-translate-y-0.5 hover:bg-brand-green-dark hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-green/40; }
   .btn-outline { @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-black px-7 py-3 text-sm font-semibold text-brand-black transition hover:bg-brand-black hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-green/40; }
-  .eyebrow { @apply text-sm font-semibold uppercase tracking-[0.18em] text-brand-green-dark; }
+  .logo-header { height: 40px; width: min(200px, 52vw); object-fit: contain; flex-shrink: 0; }
+  @media (min-width: 1024px) { .logo-header { height: 64px; width: auto; } }
+  .logo-footer { height: 48px; width: 220px; object-fit: contain; flex-shrink: 0; }
+  @media (min-width: 768px) { .logo-footer { height: 72px; width: auto; } }
+  .logo-drawer { height: 44px; width: 200px; object-fit: contain; flex-shrink: 0; }
 }
 
 @keyframes hero-rise {
