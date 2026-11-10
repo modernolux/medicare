@@ -8,6 +8,9 @@ import ServiceSearch from '@/components/search/ServiceSearch';
 import { navLinkClass } from '@/components/layout/navStyles';
 import { LOGO } from '@/data/logo';
 import { buildWhatsAppUrl } from '@/lib/links';
+import { useLogoClick } from '@/hooks/useLogoClick';
+
+const logoAria = 'Medicare Qendër Diagnostike, faqja kryesore';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,10 +28,18 @@ export default function Header() {
     setMenuOpen((value) => !value);
   };
 
+  const handleLogoClick = useLogoClick();
+
+  const onLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setMenuOpen(false);
+    setSearchOpen(false);
+    handleLogoClick(e);
+  };
+
   return (
     <header className="sticky top-0 z-40 border-b border-brand-black/10 bg-white/95 shadow-sm backdrop-blur">
       <div className="container-page flex h-20 items-center justify-between gap-6">
-        <Link to="/" className="shrink-0 transition hover:opacity-90">
+        <Link to="/" onClick={onLogoClick} aria-label={logoAria} className="shrink-0 rounded transition hover:opacity-90 outline-none focus-visible:ring-4 focus-visible:ring-brand-green/40">
           <img src={LOGO} alt="Medicare Qendër Diagnostike Durrës" className="logo-header" />
         </Link>
 

@@ -5,7 +5,7 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body { @apply bg-white font-sans text-brand-ink antialiased; }
-  img:not([src*="logo-v3"]):not([src*="favicon"]) { aspect-ratio: 4 / 3; }
+  img:not([src*="logo-v3"]):not([src*="favicon"]):not([src*="dia.png"]) { aspect-ratio: 4 / 3; }
   h1, h2, h3, h4 { @apply leading-[1.2]; }
   p { @apply leading-[1.5]; }
 }

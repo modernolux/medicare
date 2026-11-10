@@ -3,16 +3,29 @@ import { Link, NavLink } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import { MAIN_NAV, SERVICE_MENU } from '@/data/navigation';
 import { buildWhatsAppUrl } from '@/lib/links';
+import { LOGO } from '@/data/logo';
+import { useLogoClick } from '@/hooks/useLogoClick';
+
+const logoAria = 'Medicare Qendër Diagnostike, faqja kryesore';
 
 interface MobileMenuProps { open: boolean; onClose: () => void; }
 
 export default function MobileMenu({ open, onClose }: MobileMenuProps) {
   const [servicesOpen, setServicesOpen] = useState(false);
+  const handleLogoClick = useLogoClick();
   if (!open) return null;
   const linkClass = 'block rounded-xl px-4 py-3 text-base font-medium text-brand-ink transition hover:bg-white hover:text-brand-black';
+  const onLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setServicesOpen(false);
+    onClose();
+    handleLogoClick(e);
+  };
   return (
     <div id="mobile-menu" className="absolute inset-x-0 top-full max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-brand-black/10 bg-white shadow-xl lg:hidden">
       <nav aria-label="Menu mobile" className="container-page flex flex-col gap-1 py-4">
+        <Link to="/" onClick={onLogoClick} aria-label={logoAria} className="mb-2 inline-block shrink-0 rounded px-4 py-2 outline-none focus-visible:ring-4 focus-visible:ring-brand-green/40">
+          <img src={LOGO} alt="Medicare Qendër Diagnostike Durrës" className="logo-drawer" />
+        </Link>
         {MAIN_NAV.map((item) => item.to === '/sherbimet' ? (
           <div key={item.to}>
             <button type="button" onClick={() => setServicesOpen((value) => !value)} aria-expanded={servicesOpen} className={`${linkClass} flex w-full items-center justify-between`}>
